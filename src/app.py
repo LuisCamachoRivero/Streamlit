@@ -57,10 +57,14 @@ influencia_dic = {'Positive':0,
                   'Neutral':2}
 
 if st.button('Prediction'):
-    conversion_pca = pca.transform([horas_estudio,asistencia,horas_sueno,nota_previa,tutoria,act_fisica,act_extra,
-                                    involucramiento_parental[inv_parental_dict],tipo_escuela[inv_parental_dict],
-                                    nivel_educ_padres[inv_parental_dict],influencia[inv_parental_dict]])
+    conversion_pca = pca.transform([horas_estudio,asistencia,horas_sueno,nota_previa,tutoria,act_fisica,0,0,act_extra,
+                                    nivel_educ_padres[inv_parental_dict],involucramiento_parental[inv_parental_dict],0,
+                                    influencia[inv_parental_dict],tipo_escuela[inv_parental_dict],0,0,0,0,0
+                                    ])
 
+    prediction = model.predict(conversion_pca)
+    
+    st.write(f'Predicted Exam Score: {prediction[0]}')
 
 """'Hours_Studied', 'Attendance', 'Sleep_Hours', 'Previous_Scores',
        'Tutoring_Sessions', 'Physical_Activity', 'Teacher_Quality_num',
