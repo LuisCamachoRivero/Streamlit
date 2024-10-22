@@ -19,23 +19,19 @@ if act_extra:
 involucramiento_parental = st.radio(
     "Parental Involvement",
     ["Low", "Mid", "High"],
-    index=None
-)
+    index=None)
 tipo_escuela = st.radio(
     "School Type",
     ["Public", "Private"],
-    index=None
-)
+    index=None)
 nivel_educ_padres = st.radio(
     "Parental Education Level",
     ["Mid", "Bachelor", "University", "None"],
-    index=None
-)
+    index=None)
 influencia = st.radio(
     "Peer Influence",
     ["Positive", "Negative", "Neutral"],
-    index=None
-)
+    index=None)
 Family_income_num=0
 Access_to_Resources_num=0
 Motivation_Level_num=0
@@ -44,7 +40,7 @@ Teacher_Quality_num=0
 Internet_Access_num=0
 Learning_Disabilities_num=0
 
-env_parental_dict = {'Low':0,
+inv_parental_dict = {'Low':0,
                      'Mid':1,
                      'High':2}
 
@@ -61,4 +57,16 @@ influencia_dic = {'Positive':0,
                   'Neutral':2}
 
 if st.button('Prediction'):
-    conversion_pca = pca.transform([horas_estudio,asistencia,horas_sueno,nota_previa,tutoria,act_fisica,])
+    conversion_pca = pca.transform([horas_estudio,asistencia,horas_sueno,nota_previa,tutoria,act_fisica,act_extra,
+                                    involucramiento_parental[inv_parental_dict],tipo_escuela[inv_parental_dict],
+                                    nivel_educ_padres[inv_parental_dict],influencia[inv_parental_dict]])
+
+
+"""'Hours_Studied', 'Attendance', 'Sleep_Hours', 'Previous_Scores',
+       'Tutoring_Sessions', 'Physical_Activity', 'Teacher_Quality_num',
+       'Gender_num', 'Extracurricular_Activities_num',
+       'Parental_Education_Level_num', 'Parental_Involvement_num',
+       'Learning_Disabilities_num', 'Peer_Influence_num', 'School_Type_num',
+       'Family_Income_num', 'Distance_from_Home_num',
+       'Access_to_Resources_num', 'Motivation_Level_num',
+       'Internet_Access_num'"""
